@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SomkeClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="600" Width="1100" WindowStyle="None" ResizeMode="NoResize">
+
+    <Border Padding="2" Background="#12141B">
+
+        <!-- Main Grid-->
+        <Grid>
+
+            <!--#region Main Settings -->
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.4*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="0.7*" />
+            </Grid.ColumnDefinitions>
+
+            <!--#endregion -->
+
+            <!--#region Shortcuts-->
+
+            <Grid Grid.Column="0">
+
+                <!--#region Shortcuts Settings -->
+
+                <!--#region Background -->
+                <Grid.Background>
+                    <RadialGradientBrush GradientOrigin="0.5,1" Center="0.5,1" RadiusX="1" RadiusY="0.8">
+                        <GradientStop Color="#192B40" Offset="0.2"/>
+                        <GradientStop Color="#FF0E1622" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+                <!--#endregion -->
+                
+                <!--#endregion -->
+
+            </Grid>
+
+            <!--#endregion-->
+
+            <!--#region Main Content-->
+
+            <Grid Grid.Column="1" Background="#192738">
+                
+            </Grid>
+
+            <!--#endregion-->
+
+            <!--#region Friends, Profile etc.-->
+
+            <StackPanel Grid.Column="2" Background="#0C121C">
+
+            </StackPanel>
+
+            <!--#endregion-->
+
+        </Grid>
+
+    </Border>
+
 </Window>
