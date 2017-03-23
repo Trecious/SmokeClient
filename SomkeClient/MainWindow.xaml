@@ -1,66 +1,86 @@
-﻿<Window x:Class="SomkeClient.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SomkeClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1100" WindowStyle="None" ResizeMode="NoResize">
+﻿<Window
+    x:Class="SomkeClient.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SomkeClient"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="1100"
+    Height="600"
+    ResizeMode="NoResize"
+    WindowStyle="None"
+    mc:Ignorable="d">
 
-    <Border Padding="2" Background="#12141B">
+    <Border x:Name="ResizeFrame" Padding="3" Background="#FF12141B">
+        <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B">
 
-        <!-- Main Grid-->
-        <Grid>
+            <!--#region Main Grid-->
+            <Grid>
 
-            <!--#region Main Settings -->
+                <!--#region Main Settings-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+                <!--#endregion-->
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.4*" />
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="0.7*" />
-            </Grid.ColumnDefinitions>
+                <!--#region Left Panel-->
+                <StackPanel Grid.Column="0">
 
-            <!--#endregion -->
+                    <!--#region Shortcut Panel-->
+                    <Grid Height="490">
 
-            <!--#region Shortcuts-->
+                        <!--#region Shortcuts Settings-->
+                        <Grid.Background>
+                            <RadialGradientBrush Center="0.5,0.6" GradientOrigin="0.5,3" RadiusX="0.9" RadiusY="1">
+                                <GradientStop Offset="0.1" Color="#FF1765BF" />
+                                <GradientStop Offset="1" Color="Black" />
+                            </RadialGradientBrush>
+                        </Grid.Background>
+                        <!--#endregion-->
 
-            <Grid Grid.Column="0">
+                    </Grid>
+                    <!--#endregion-->
 
-                <!--#region Shortcuts Settings -->
+                    <!--#region Music Player-->
+                    <StackPanel>
 
-                <!--#region Background -->
-                <Grid.Background>
-                    <RadialGradientBrush GradientOrigin="0.5,1" Center="0.5,1" RadiusX="1" RadiusY="0.8">
-                        <GradientStop Color="#192B40" Offset="0.2"/>
-                        <GradientStop Color="#FF0E1622" Offset="1"/>
-                    </RadialGradientBrush>
-                </Grid.Background>
-                <!--#endregion -->
-                
-                <!--#endregion -->
+                        <!--#region Loadingbar-->
+                        <Grid Height="5" Background="#1E2831">
+                            
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region Musicdata-->
+                        <Grid Background="#0D151E">
+                            
+                        </Grid>
+                        <!--#endregion-->
+
+                    </StackPanel>
+                    <!--#endregion-->
+
+                </StackPanel>
+                <!--#endregion-->
+
+                <!--#region Main Content-->
+                <Grid Grid.Column="1" Background="#192738">
+                    
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Right Panel-->
+                <StackPanel Grid.Column="2" Background="#0C121C">
+                    
+                </StackPanel>
+                <!--#endregion-->
 
             </Grid>
-
             <!--#endregion-->
 
-            <!--#region Main Content-->
-
-            <Grid Grid.Column="1" Background="#192738">
-                
-            </Grid>
-
-            <!--#endregion-->
-
-            <!--#region Friends, Profile etc.-->
-
-            <StackPanel Grid.Column="2" Background="#0C121C">
-
-            </StackPanel>
-
-            <!--#endregion-->
-
-        </Grid>
-
+        </Border>
     </Border>
 
 </Window>
