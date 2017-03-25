@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackEnd\Account.cs" />
+    <Compile Include="BackEnd\DataClasses\EventMessage.cs" />
+    <Compile Include="BackEnd\EventMgr\Event.cs" />
+    <Compile Include="BackEnd\EventMgr\EventManager.cs" />
+    <Compile Include="BackEnd\Web.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
