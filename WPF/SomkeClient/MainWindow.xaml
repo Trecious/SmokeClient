@@ -8,12 +8,11 @@
     Title="MainWindow"
     Width="1100"
     Height="600"
-    ResizeMode="NoResize"
     WindowStyle="None"
     mc:Ignorable="d">
 
-    <Border x:Name="ResizeFrame" Padding="3" Background="#FF12141B">
-        <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B">
+    <Border x:Name="ResizeFrame" Padding="3" Background="#FF12141B" MouseDown="ResizeFrame_MouseDown">
+        <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B" MouseDown="LocationFrame_MouseDown">
 
             <!--#region Main Grid-->
             <Grid>
@@ -67,7 +66,7 @@
 
                 <!--#region Main Content-->
                 <Grid Grid.Column="1" Background="#192738">
-                    <Image 
+                     
                 </Grid>
                 <!--#endregion-->
 
