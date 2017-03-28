@@ -24,5 +24,11 @@ namespace SomkeClient
         {
             InitializeComponent();
         }
+
+        private void Location_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
     }
 }
