@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using SmokeClient;
 
 namespace SomkeClient
 {
     class EventManager
     {
-        private Account _account;
+        private Client _client;
         private List<EventBase> _registeredCallbacks;
 
-        public EventManager(Account account)
+        public EventManager(Client client)
         {
             _registeredCallbacks = new List<EventBase>();
-            _account = account;
+            _client = client;
         }
 
         public Event<TEvent> Subscribe<TEvent>(Action<TEvent> eventFunction) where TEvent : class, IEventMsg
