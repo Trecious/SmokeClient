@@ -9,77 +9,101 @@
     Width="1100"
     Height="600"
     WindowStyle="None"
+    AllowsTransparency="True"
+    ResizeMode="CanResize"
     mc:Ignorable="d">
 
-    <Border x:Name="ResizeFrame" Padding="3" Background="#FF12141B" MouseDown="ResizeFrame_MouseDown">
-        <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B" MouseDown="LocationFrame_MouseDown">
+    <!--#region Window Settings -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome     
+        CaptionHeight="1"  
+        CornerRadius ="0"
+        ResizeBorderThickness="4"         
+        GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+    <!--#endregion-->
+    
+    <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B" MouseDown="Location_MouseDown">
 
-            <!--#region Main Grid-->
-            <Grid>
+        <!--#region Main Grid-->
+        <Grid x:Name="MainGrid">
 
-                <!--#region Main Settings-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*" />
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="0.5*" />
-                </Grid.ColumnDefinitions>
+            <!--#region Main Settings-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+
+            <!--#region Left Panel-->
+            <Grid Grid.Column="0" >
+
+                <!--#region Left Panel Settings-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="0.9*" />
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+                
+                <!--#region Shortcut Panel-->
+                <Grid Grid.Row="0">
+
+                    <!--#region Shortcuts Settings-->
+                    <Grid.Background>
+                        <RadialGradientBrush Center="0.5,0.6" GradientOrigin="0.5,3" RadiusX="0.9" RadiusY="1">
+                            <GradientStop Offset="0.1" Color="#FF1765BF" />
+                            <GradientStop Offset="1" Color="Black" />
+                        </RadialGradientBrush>
+                    </Grid.Background>
+                    <!--#endregion-->
+
+                </Grid>
                 <!--#endregion-->
 
-                <!--#region Left Panel-->
-                <StackPanel Grid.Column="0">
+                <!--#region Music Player-->
+                <Grid Grid.Row="1">
 
-                    <!--#region Shortcut Panel-->
-                    <Grid Height="490">
+                    <!--#region Music Player Settings-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
 
-                        <!--#region Shortcuts Settings-->
-                        <Grid.Background>
-                            <RadialGradientBrush Center="0.5,0.6" GradientOrigin="0.5,3" RadiusX="0.9" RadiusY="1">
-                                <GradientStop Offset="0.1" Color="#FF1765BF" />
-                                <GradientStop Offset="1" Color="Black" />
-                            </RadialGradientBrush>
-                        </Grid.Background>
-                        <!--#endregion-->
+                    <!--#region Statusbar-->
+                    <Grid Grid.Row="0" Background="#1E2831">
 
                     </Grid>
                     <!--#endregion-->
 
-                    <!--#region Music Player-->
-                    <StackPanel>
+                    <!--#region Musicdata-->
+                    <Grid Grid.Row="1" Background="#0D151E">
 
-                        <!--#region Loadingbar-->
-                        <Grid Height="5" Background="#1E2831">
-                            
-                        </Grid>
-                        <!--#endregion-->
-
-                        <!--#region Musicdata-->
-                        <Grid Background="#0D151E">
-                            
-                        </Grid>
-                        <!--#endregion-->
-
-                    </StackPanel>
+                    </Grid>
                     <!--#endregion-->
 
-                </StackPanel>
-                <!--#endregion-->
-
-                <!--#region Main Content-->
-                <Grid Grid.Column="1" Background="#192738">
-                     
                 </Grid>
-                <!--#endregion-->
-
-                <!--#region Right Panel-->
-                <StackPanel Grid.Column="2" Background="#0C121C">
-                    
-                </StackPanel>
                 <!--#endregion-->
 
             </Grid>
             <!--#endregion-->
 
-        </Border>
+            <!--#region Main Content-->
+            <Grid Grid.Column="1" Background="#192738" >
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Right Panel-->
+            <Grid Grid.Column="2" Background="#0C121C" >
+
+            </Grid>
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+        
     </Border>
 
 </Window>
