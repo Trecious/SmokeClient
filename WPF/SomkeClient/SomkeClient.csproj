@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,10 +58,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BackEnd\Client.cs" />
+    <Compile Include="BackEnd\DataClasses\EResult.cs" />
     <Compile Include="BackEnd\DataClasses\EventMessage.cs" />
     <Compile Include="BackEnd\DataClasses\SteamEvent.cs" />
     <Compile Include="BackEnd\EventMgr\Event.cs" />
     <Compile Include="BackEnd\EventMgr\EventManager.cs" />
+    <Compile Include="BackEnd\DataClasses\WebApi\GetCmListResponse.cs" />
+    <Compile Include="BackEnd\Server.cs" />
     <Compile Include="BackEnd\WebAPI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +97,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

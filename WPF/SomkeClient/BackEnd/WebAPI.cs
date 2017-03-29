@@ -9,37 +9,30 @@ namespace SomkeClient
 {
     class WebAPI
     {
-        private string _apiKey;
-
-        public WebAPI(string apiKey)
-        {
-            _apiKey = apiKey;
-        }
-
-        public string Call(HttpMethod method, string intface, string function, int version = 1,
-            Dictionary<string, string> data = null, bool ssl = false)
+        public static string Call(HttpMethod method, string intface, string function, uint version = 1,
+            Dictionary<string, string> data = null, string apiKey = null, bool ssl = false)
         {
             if(data == null)
                 data = new Dictionary<string, string>();
 
-            string url = (ssl ? "https://" : "http://") + $"api.steampowered.com/{intface}/{function}/v{version}";
+            string url = (ssl ? "https://" : "http://") + $"api.steampowered.com/{intface}/{function}/v{version}/";
 
             data.Add("format", "json");
             
-            if(!string.IsNullOrEmpty(_apiKey))
-                data.Add("key", _apiKey);
+            if(!string.IsNullOrEmpty(apiKey))
+                data.Add("key", apiKey);
 
             return Fetch(url, method, data);
         }
 
-        private string Fetch(string url, HttpMethod method, Dictionary<string, string> data = null)
+        private static string Fetch(string url, HttpMethod method, Dictionary<string, string> data = null)
         {
             var isGetMethod = method.Equals(HttpMethod.Get);
 
             if (isGetMethod)
                 url += "?" + DataToUrlString(data);
 
-            var webRequest = (HttpWebRequest) WebRequest.Create(url);
+            var webRequest = WebRequest.Create(url);
             
             webRequest.Method = method.ToString();
             webRequest.Timeout = 60000;
@@ -67,7 +60,7 @@ namespace SomkeClient
             }
         }
 
-        private string DataToUrlString(Dictionary<string, string> data)
+        private static string DataToUrlString(Dictionary<string, string> data)
         {
             var dataString = String.Empty;
 
