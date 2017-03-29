@@ -3,32 +3,48 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Cache;
+using System.Net.Http;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace SomkeClient
 {
-    class Web
+    class WebAPI
     {
-        public string Fetch(string url, string method = "get", Dictionary<string, string> data = null,
-            string referer = "", CookieContainer cookies = null)
+        private string _apiKey;
+
+        public WebAPI(string apiKey)
         {
-            var isGetMethod = method.ToLower() == "get";
+            _apiKey = apiKey;
+        }
+
+        public string Call(HttpMethod method, string intface, string function, int version = 1,
+            Dictionary<string, string> data = null, bool ssl = false)
+        {
+            if(data == null)
+                data = new Dictionary<string, string>();
+
+            string url = (ssl ? "https://" : "http://") + $"api.steampowered.com/{intface}/{function}/v{version}";
+
+            data.Add("format", "json");
+            
+            if(!string.IsNullOrEmpty(_apiKey))
+                data.Add("key", _apiKey);
+
+            return Fetch(url, method, data);
+        }
+
+        private string Fetch(string url, HttpMethod method, Dictionary<string, string> data = null)
+        {
+            var isGetMethod = method.Equals(HttpMethod.Get);
 
             if (isGetMethod)
                 url += "?" + DataToUrlString(data);
 
             var webRequest = (HttpWebRequest) WebRequest.Create(url);
-
-            webRequest.Method = method;
-            webRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
-            webRequest.Accept = "application/json, text/javascript;q=0.9, */*;q=0.5";
-            webRequest.UserAgent =
-                "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
-            webRequest.Referer = referer;
+            
+            webRequest.Method = method.ToString();
             webRequest.Timeout = 60000;
-            webRequest.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Revalidate);
-            webRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            webRequest.CookieContainer = cookies ?? new CookieContainer();
 
             if (!isGetMethod && data != null)
             {

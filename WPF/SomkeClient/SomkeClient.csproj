@@ -54,7 +54,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Web.cs" />
+    <Compile Include="BackEnd\Client.cs" />
+    <Compile Include="BackEnd\DataClasses\EventMessage.cs" />
+    <Compile Include="BackEnd\DataClasses\SteamEvent.cs" />
+    <Compile Include="BackEnd\EventMgr\Event.cs" />
+    <Compile Include="BackEnd\EventMgr\EventManager.cs" />
+    <Compile Include="BackEnd\WebAPI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
