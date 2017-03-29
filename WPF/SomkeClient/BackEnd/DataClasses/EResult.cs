@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace SomkeClient
 {
-    //Thanks too: https://github.com/SteamRE/SteamKit/blob/d9a1da3513e2747dbe2c3d752aebf7464e2d900b/Resources/NetHook2/NetHook2/steam/steamtypes.h
-
     public enum EResult
     {
         Ok = 1,                            // success
