@@ -64,7 +64,7 @@
     <Compile Include="BackEnd\EventMgr\Event.cs" />
     <Compile Include="BackEnd\EventMgr\EventManager.cs" />
     <Compile Include="BackEnd\DataClasses\WebApi\GetCmListResponse.cs" />
-    <Compile Include="BackEnd\Server.cs" />
+    <Compile Include="BackEnd\ServerProvider.cs" />
     <Compile Include="BackEnd\WebAPI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
