@@ -21,14 +21,36 @@ namespace SomkeClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private double _smokeMainWindow_Height;
+        private double _smokeMainWindow_Width;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            this.Width = SystemParameters.WorkArea.Width - 100;
+            this.Height = this.Width / 16 * 9;
+            this.MaxWidth = SystemParameters.WorkArea.Width;
+            this.MaxHeight = SystemParameters.WorkArea.Height;
+
+            this._smokeMainWindow_Height = this.Height;
+            this._smokeMainWindow_Width = this.Width;
+  
         }
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            if (sizeInfo.WidthChanged)
+                this.Height = sizeInfo.NewSize.Width / 16 * 9;
+            else
+                this.Width = sizeInfo.NewSize.Height / 9 * 16;
         }
     }
 }
