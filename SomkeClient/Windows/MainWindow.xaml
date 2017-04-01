@@ -9,7 +9,8 @@
     WindowStyle="None"
     AllowsTransparency="True"
     ResizeMode="CanResize"
-    mc:Ignorable="d"  Width="800" Height="446">
+    Icon="../Resources/Icon.ico"
+    mc:Ignorable="d"  Width="800" Height="446" MouseDown="Location_MouseDown">
 
     <!--#region Window Settings -->
     <WindowChrome.WindowChrome>
