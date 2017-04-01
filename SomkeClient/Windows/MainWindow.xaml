@@ -21,7 +21,7 @@
     </WindowChrome.WindowChrome>
     <!--#endregion-->
     
-    <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B" MouseDown="Location_MouseDown">
+    <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B">
 
         <!--#region Main Grid-->
         <Grid x:Name="MainGrid">

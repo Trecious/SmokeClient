@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SomkeClient.BackEnd;
+using System.Windows.Interop;
 
 namespace SomkeClient
 {
@@ -37,20 +38,63 @@ namespace SomkeClient
 
             this._smokeMainWindow_Height = this.Height;
             this._smokeMainWindow_Width = this.Width;
-  
+
+            SetLastWidthHeight();
+
+
         }
+
+
+        #region Resizing and Dragging EventHandlers
+        private double _lastHeight;
+        private double _lastWidth;
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        protected override void OnSourceInitialized(EventArgs e)
         {
-            if (sizeInfo.WidthChanged)
-                this.Height = sizeInfo.NewSize.Width / 16 * 9;
-            else
-                this.Width = sizeInfo.NewSize.Height / 9 * 16;
+            base.OnSourceInitialized(e);
+            HwndSource source = HwndSource.FromVisual(this) as HwndSource;
+            if (source != null)
+            {
+                source.AddHook(new HwndSourceHook(WinProc));
+            }
         }
+
+        public const Int32 WM_EXITSIZEMOVE = 0x0232;
+        private IntPtr WinProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, ref Boolean handled)
+        {
+            IntPtr result = IntPtr.Zero;
+            switch (msg)
+            {
+                case WM_EXITSIZEMOVE:
+                    {
+                        if (this.Width != _lastWidth)
+                        {
+                            this.Height = this.Width / 16 * 9;
+                            SetLastWidthHeight();
+                        }
+                        else if(this.Height != _lastHeight)
+                        {
+                            this.Width = this.Height / 9 * 16;
+                            SetLastWidthHeight();
+                        }
+                    }
+                    break;
+            }
+
+            return result;
+        }
+
+        public void SetLastWidthHeight()
+        {
+            this._lastWidth = this.Width;
+            this._lastHeight = this.Height;
+        }
+        #endregion
+
     }
 }
