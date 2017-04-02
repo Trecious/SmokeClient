@@ -57,7 +57,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="BackEnd\Client.cs" />
+    <Compile Include="BackEnd\DataClasses\EResult.cs" />
+    <Compile Include="BackEnd\DataClasses\EventMessage.cs" />
+    <Compile Include="BackEnd\DataClasses\SteamEvent.cs" />
+    <Compile Include="BackEnd\EventMgr\Event.cs" />
+    <Compile Include="BackEnd\EventMgr\EventManager.cs" />
+    <Compile Include="BackEnd\DataClasses\WebApi\GetCmListResponse.cs" />
+    <Compile Include="BackEnd\ServerProvider.cs" />
+    <Compile Include="BackEnd\WebAPI.cs" />
+    <Page Include="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -65,7 +78,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +104,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Roboto\Roboto-Black.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-BlackItalic.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Bold.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-BoldItalic.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Italic.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Light.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-LightItalic.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Medium.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-MediumItalic.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Regular.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-Thin.ttf" />
+    <Resource Include="Fonts\Roboto\Roboto-ThinItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\Roboto\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

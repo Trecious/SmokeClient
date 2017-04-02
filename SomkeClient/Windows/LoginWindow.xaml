@@ -1,0 +1,86 @@
+﻿<Window x:Class="SomkeClient.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SomkeClient"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        Icon="../Resources/Icon.ico" 
+        Width="800" Height="450" 
+        MouseDown="Location_MouseDown" 
+        Background="#FF020A14" 
+        FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto">
+
+    <!--#region Window Settings -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome     
+        CaptionHeight="1"  
+        CornerRadius ="0"
+        ResizeBorderThickness="4"         
+        GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+    <!--#endregion-->
+
+    <Border x:Name="LocationFrame" Padding="3" Background="#151515">
+
+        <!--#region Main Grid-->
+        <Grid Background="#02080F">
+
+            <!--#region Main Settings-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="2.5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <!--#region First Grid-->
+            <Grid Grid.Row="0" Margin="20,10,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <Image Grid.Column="0" Source="../Resources/Icon.ico" Margin="0,0,20,0" HorizontalAlignment="Left"/>
+                </Viewbox>
+
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <Grid x:Name="UpperLabelGrid">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.3*" />
+                            <RowDefinition Height="1.3*" />
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Text="Welcome to" Foreground="White" FontSize="30" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Light" />
+                        <TextBlock Grid.Row="1" Text="SMOKE" Foreground="White" FontSize="30" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" />
+
+                    </Grid>
+                </Viewbox>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Second Grid-->
+            <Grid Grid.Row="1">
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Third Grid-->
+            <Grid Grid.Row="2">
+
+            </Grid>
+            <!--#endregion-->
+
+
+        </Grid>
+        <!--#endregion-->
+
+    </Border>
+</Window>
