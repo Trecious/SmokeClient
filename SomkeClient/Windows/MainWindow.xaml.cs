@@ -22,8 +22,6 @@ namespace SomkeClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        private double _smokeMainWindow_Height;
-        private double _smokeMainWindow_Width;
 
         public MainWindow()
         {
@@ -35,9 +33,6 @@ namespace SomkeClient
             this.Height = this.Width / 16 * 9;
             this.MaxWidth = SystemParameters.WorkArea.Width;
             this.MaxHeight = SystemParameters.WorkArea.Height;
-
-            this._smokeMainWindow_Height = this.Height;
-            this._smokeMainWindow_Width = this.Width;
 
             SetLastWidthHeight();
 

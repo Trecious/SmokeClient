@@ -21,8 +21,8 @@
         GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
     <!--#endregion-->
-    
-    <Border x:Name="LocationFrame" Padding="3" Background="#FF12141B">
+
+    <Border x:Name="LocationFrame" Padding="3" Background="#151515">
 
         <!--#region Main Grid-->
         <Grid x:Name="MainGrid">

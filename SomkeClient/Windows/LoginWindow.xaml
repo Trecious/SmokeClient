@@ -5,8 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SomkeClient"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="483">
-    <Grid>
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        Icon="../Resources/Icon.ico"  Width="800" Height="446" MouseDown="Location_MouseDown" Background="#FF020A14">
+
+    <!--#region Window Settings -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome     
+        CaptionHeight="1"  
+        CornerRadius ="0"
+        ResizeBorderThickness="4"         
+        GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+    <!--#endregion-->
+
+    <Border x:Name="LocationFrame" Padding="3" Background="#151515">
         
-    </Grid>
+        <!--#region Main Grid-->
+        <Grid Background="#02080F">
+
+            <!--#region Main Settings-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.3*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <!--#region First Grid-->
+            <Grid Grid.Row="0" Margin="0,10,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="144" Margin="44,0,0,0">
+                    <Image Grid.Column="0" Source="../Resources/Icon.ico" Margin="53,10,0,10" />
+                </Viewbox>
+
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <Grid >
+                    
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.3*" />
+                            <RowDefinition Height="1.3*" />
+                        </Grid.RowDefinitions>
+        
+                        <TextBlock Grid.Row="0" Text="Welcome to" Foreground="White" FontSize="30"/>
+                        <TextBlock Grid.Row="1" Text="SMOKE" Foreground="White" FontSize="30" FontWeight="Bold"/>
+                    
+                    </Grid>
+                </Viewbox>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Second Grid-->
+            <Grid Grid.Row="1">
+
+            </Grid>
+            <!--#endregion-->
+            
+            <!--#region Third Grid-->
+            <Grid Grid.Row="2">
+
+            </Grid>
+            <!--#endregion-->
+            
+            <!--#region Fourth Grid-->
+            <Grid Grid.Row="3">
+
+            </Grid>
+            <!--#endregion-->
+
+
+        </Grid>
+        <!--#endregion-->
+        
+    </Border>
 </Window>
