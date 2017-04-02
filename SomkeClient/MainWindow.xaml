@@ -91,7 +91,9 @@
 
             <!--#region Main Content-->
             <Grid Grid.Column="1" Background="#192738" >
-
+            
+                <Button Click="ButtonBase_OnClick"></Button>
+                
             </Grid>
             <!--#endregion-->
 

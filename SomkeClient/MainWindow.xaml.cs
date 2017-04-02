@@ -30,5 +30,10 @@ namespace SomkeClient
         {
             this.DragMove();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            ServerProvider.GetCmServers(1);
+        }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace SomkeClient
+namespace SmokeyLib
 {
     public abstract class EventBase
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SomkeClient
+namespace SmokeyLib
 {
     class EventManager
     {

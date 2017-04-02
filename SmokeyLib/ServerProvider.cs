@@ -5,11 +5,31 @@ using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
 
-namespace SomkeClient.BackEnd
+namespace SmokeyLib
 {
     class ServerProvider
     {
-        public static List<IPEndPoint> GetCmServers(int cellId)
+        private int _cellId;
+        private int _serverNummber;
+        private List<IPEndPoint> _cmServers;
+
+        public IPEndPoint GetNextCmServer()
+        {
+            if (_cmServers == null || _serverNummber == _cmServers.Count)
+            {
+                _cellId++;
+                _serverNummber = 0;
+                _cmServers = GetCmServers(_cellId);
+            }
+
+            if (_cmServers.Count == 0)
+                return null;
+
+            _serverNummber++;
+            return _cmServers.ElementAt(_serverNummber);
+        }
+
+        private List<IPEndPoint> GetCmServers(int cellId)
         {
             var data = new Dictionary<string, string>
             {
@@ -28,7 +48,7 @@ namespace SomkeClient.BackEnd
             return null;
         }
 
-        private static IPEndPoint StringToIpEndpoint(string endPoint)
+        private IPEndPoint StringToIpEndpoint(string endPoint)
         {
             var epStrings = endPoint.Split(':');
 

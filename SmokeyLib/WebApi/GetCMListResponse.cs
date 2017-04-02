@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmokeyLib;
 
-namespace SomkeClient
-{
+namespace SmokeyLib
+{ 
     public class GetCmListResponse
     {
         [JsonProperty("response")]
