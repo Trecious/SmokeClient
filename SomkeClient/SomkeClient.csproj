@@ -57,15 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BackEnd\Client.cs" />
-    <Compile Include="BackEnd\DataClasses\EResult.cs" />
-    <Compile Include="BackEnd\DataClasses\EventMessage.cs" />
-    <Compile Include="BackEnd\DataClasses\SteamEvent.cs" />
-    <Compile Include="BackEnd\EventMgr\Event.cs" />
-    <Compile Include="BackEnd\EventMgr\EventManager.cs" />
-    <Compile Include="BackEnd\DataClasses\WebApi\GetCmListResponse.cs" />
-    <Compile Include="BackEnd\ServerProvider.cs" />
-    <Compile Include="BackEnd\WebAPI.cs" />
     <Page Include="Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

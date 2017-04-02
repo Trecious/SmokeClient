@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using SomkeClient.BackEnd;
 
 namespace SmokeyLib
 {
@@ -37,13 +36,14 @@ namespace SmokeyLib
 
             try
             {
-                _socketWriter.Write(data.);
+                _socketWriter.Write(data);
             }
             catch (IOException)
             {
                 return false;
             }
 
+            return false;
         }
     }
 }
