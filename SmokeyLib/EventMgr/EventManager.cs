@@ -5,13 +5,11 @@ namespace SmokeyLib
 {
     class EventManager
     {
-        private Client _client;
         private List<EventBase> _registeredCallbacks;
 
-        public EventManager(Client client)
+        public EventManager()
         {
             _registeredCallbacks = new List<EventBase>();
-            _client = client;
         }
 
         public Event<TEvent> Subscribe<TEvent>(Action<TEvent> eventFunction) where TEvent : class, IEventMsg
