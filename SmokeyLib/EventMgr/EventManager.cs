@@ -35,7 +35,7 @@ namespace SmokeyLib
             _registeredCallbacks.Remove(evnt);
         }
 
-        void Handle(IEventMsg evntMsg)
+        internal void Handle(IEventMsg evntMsg)
         {
             _registeredCallbacks
                 .FindAll(evnt => evnt.EventType.IsInstanceOfType(evntMsg))
