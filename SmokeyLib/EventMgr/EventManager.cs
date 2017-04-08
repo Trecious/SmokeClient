@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SmokeyLib
 {
-    class EventManager
+    public class EventManager
     {
         private List<EventBase> _registeredCallbacks;
 

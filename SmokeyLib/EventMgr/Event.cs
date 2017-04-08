@@ -8,7 +8,7 @@ namespace SmokeyLib
         internal abstract void Run(object callback);
     }
 
-    class Event<TEvent> : EventBase, IDisposable where TEvent : class, IEventMsg
+    public class Event<TEvent> : EventBase, IDisposable where TEvent : class, IEventMsg
     {
         private EventManager _eventManager;
         internal override Type EventType => typeof(TEvent);

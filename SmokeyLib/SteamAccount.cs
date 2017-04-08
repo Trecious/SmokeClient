@@ -4,7 +4,7 @@ using SteamKit2;
 
 namespace SmokeyLib
 {
-    class SteamAccount
+    public class SteamAccount
     {
         private const string SENTRYFILEPATH = "sentry.bin";
 
@@ -29,6 +29,7 @@ namespace SmokeyLib
             SteamDirectory.Initialize();
             
             _client = new SteamClient(ProtocolType.Tcp);
+            _user = _client.GetHandler<SteamUser>();
             _callbackManager = new CallbackManager(_client);
 
             _client.AddHandler(_user);
@@ -54,6 +55,7 @@ namespace SmokeyLib
         private void OnLoginKeyCallback(SteamUser.LoginKeyCallback callback)
         {
             Properties.Settings.Default.SessionKey = _rememberPw ? callback.LoginKey : null;
+            Properties.Settings.Default.Username = _rememberPw ? _username : null;
         }
 
         private void OnConnectedCallback(SteamClient.ConnectedCallback callback)
