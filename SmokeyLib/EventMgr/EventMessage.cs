@@ -10,9 +10,4 @@ namespace SmokeyLib
     {
 
     }
-
-    public abstract class EventMsg : IEventMsg
-    {
-
-    }
 }

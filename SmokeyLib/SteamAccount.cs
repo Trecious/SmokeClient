@@ -14,8 +14,13 @@ namespace SmokeyLib
 
         private string _username;
         private string _password;
+        private string _twoFaCode;
+        private string _guardCode;
+        private bool _rememberPw;
 
         private EventManager _eventManager;
+
+        private bool _expectReconnect = false;
 
         public SteamAccount(EventManager mgr)
         {
@@ -31,32 +36,82 @@ namespace SmokeyLib
             _callbackManager.Subscribe<SteamClient.ConnectedCallback>(OnConnectedCallback);
             _callbackManager.Subscribe<SteamClient.DisconnectedCallback>(OnDisconnectedCallback);
             _callbackManager.Subscribe<SteamUser.LoggedOnCallback>(OnLoggedOnCallback);
+            _callbackManager.Subscribe<SteamUser.LoginKeyCallback>(OnLoginKeyCallback);
             _callbackManager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnUpdateMachineAuthCallback);
         }
 
-        public void DoLogin(string username, string password, string twoFaCode, string steamGuardCode)
+        public void DoLogin(string username, string password, string twoFaCode, string guardCode, bool rememberPw)
         {
-            throw new NotImplementedException();
+            _username = username;
+            _password = password;
+            _twoFaCode = twoFaCode;
+            _guardCode = guardCode;
+            _rememberPw = rememberPw;
+
+            _client.Connect();
+        }
+
+        private void OnLoginKeyCallback(SteamUser.LoginKeyCallback callback)
+        {
+            Properties.Settings.Default.SessionKey = _rememberPw ? callback.LoginKey : null;
         }
 
         private void OnConnectedCallback(SteamClient.ConnectedCallback callback)
         {
-            throw new NotImplementedException();
+            _user.LogOn(new SteamUser.LogOnDetails
+            {
+                Username = _username,
+                Password = _password,
+                TwoFactorCode = _twoFaCode,
+                AuthCode = _guardCode,
+                ShouldRememberPassword = _rememberPw,
+                SentryFileHash = Convert.FromBase64String(Properties.Settings.Default.SentryHash),
+                LoginKey = Properties.Settings.Default.SessionKey
+            });
         }
 
         private void OnLoggedOnCallback(SteamUser.LoggedOnCallback callback)
         {
-            throw new NotImplementedException();
+            if(callback.Result != EResult.OK)
+            {
+                _eventManager.Handle(new SteamEvent.LoginFailed { Reason = callback.Result });
+                return;
+            }
+
+            _eventManager.Handle(new SteamEvent.LoggedIn { } );
         }
 
         private void OnUpdateMachineAuthCallback(SteamUser.UpdateMachineAuthCallback callback)
         {
-            throw new NotImplementedException();
+            var hash = CryptoHelper.SHAHash(callback.Data);
+            Properties.Settings.Default.SentryHash = Convert.ToBase64String(hash);
+
+            _user.SendMachineAuthResponse(new SteamUser.MachineAuthDetails
+            {
+                BytesWritten = callback.BytesToWrite,
+                FileName = callback.FileName,
+                FileSize = callback.Data.Length,
+                JobID = callback.JobID,
+                LastError = 0,
+                Offset = callback.Offset,
+                OneTimePassword = callback.OneTimePassword,
+                Result = EResult.OK,
+                SentryFileHash = hash
+            });
+
+            _expectReconnect = true;
         }
 
         private void OnDisconnectedCallback(SteamClient.DisconnectedCallback callback)
         {
-            throw new NotImplementedException();
+            if (!_expectReconnect)
+            {
+                _eventManager.Handle(new SteamEvent.Disconnected { CausedByUser = callback.UserInitiated });
+                return;
+            }
+
+            _expectReconnect = false;
+            _client.Connect();
         }
     }
 }
