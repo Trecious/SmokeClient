@@ -17,6 +17,11 @@ namespace SmokeyLib
             return new Event<TEvent>(eventFunction, this);
         }
 
+        public void Subscribe<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         public void UnSubscribe(EventBase evnt)
         {
             UnRegister(evnt);

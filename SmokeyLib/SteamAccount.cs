@@ -8,6 +8,8 @@ namespace SmokeyLib
     {
         private const string SENTRYFILEPATH = "sentry.bin";
 
+        private RepeatedFunction updateFunction;
+
         private CallbackManager _callbackManager;
         private SteamClient _client;
         private SteamUser _user;
@@ -32,13 +34,13 @@ namespace SmokeyLib
             _user = _client.GetHandler<SteamUser>();
             _callbackManager = new CallbackManager(_client);
 
-            _client.AddHandler(_user);
-
             _callbackManager.Subscribe<SteamClient.ConnectedCallback>(OnConnectedCallback);
             _callbackManager.Subscribe<SteamClient.DisconnectedCallback>(OnDisconnectedCallback);
             _callbackManager.Subscribe<SteamUser.LoggedOnCallback>(OnLoggedOnCallback);
             _callbackManager.Subscribe<SteamUser.LoginKeyCallback>(OnLoginKeyCallback);
             _callbackManager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnUpdateMachineAuthCallback);
+
+            updateFunction = new RepeatedFunction(() => _callbackManager.RunCallbacks(), 3000);
         }
 
         public void DoLogin(string username, string password, string twoFaCode, string guardCode, bool rememberPw)
@@ -50,6 +52,7 @@ namespace SmokeyLib
             _rememberPw = rememberPw;
 
             _client.Connect();
+            updateFunction.Start();
         }
 
         private void OnLoginKeyCallback(SteamUser.LoginKeyCallback callback)

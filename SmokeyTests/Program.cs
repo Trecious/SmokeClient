@@ -15,13 +15,21 @@ namespace SmokeyTests
             var account = new SteamAccount(eventManager);
 
             eventManager.Subscribe<SteamEvent.LoggedIn>(OnLoggedIn);
+            eventManager.Subscribe<SteamEvent.LoginFailed>(OnLoginFailed);
 
-            account.DoLogin("do not even", "think", "about", "it :)", false);
+            account.DoLogin(null, null, null, null, false);
+            Console.ReadKey();
+        }
+
+        private static void OnLoginFailed(SteamEvent.LoginFailed obj)
+        {
+            Console.ReadKey();
         }
 
         private static void OnLoggedIn(SteamEvent.LoggedIn obj)
         {
-            
+            Console.WriteLine("OK");
+            Console.ReadKey();
         }
     }
 }
