@@ -86,5 +86,13 @@ namespace SomkeClient
             this._lastHeight = this.Height;
         }
         #endregion
+
+        private void PwTxt_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if(PwTxt.Password.Length != 0)
+                RegBtn.Visibility = Visibility.Hidden;
+            else
+                RegBtn.Visibility = Visibility.Visible;
+        }
     }
 }

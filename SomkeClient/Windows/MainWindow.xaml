@@ -22,7 +22,7 @@
     </WindowChrome.WindowChrome>
     <!--#endregion-->
 
-    <Border x:Name="LocationFrame" Padding="3" Background="#151515">
+    <Border Padding="3" Background="#151515">
 
         <!--#region Main Grid-->
         <Grid x:Name="MainGrid">
@@ -44,7 +44,7 @@
                     <RowDefinition Height="0.9*" />
                 </Grid.RowDefinitions>
                 <!--#endregion-->
-                
+
                 <!--#region Shortcut Panel-->
                 <Grid Grid.Row="0">
 
@@ -89,11 +89,7 @@
             <!--#endregion-->
 
             <!--#region Main Content-->
-            <Grid Grid.Column="1" Background="#192738" >
-            
-                <Button Click="ButtonBase_OnClick"></Button>
-                
-            </Grid>
+            <Grid Grid.Column="1" Background="#192738" />
             <!--#endregion-->
 
             <!--#region Right Panel-->
@@ -104,7 +100,7 @@
 
         </Grid>
         <!--#endregion-->
-        
+
     </Border>
 
 </Window>
