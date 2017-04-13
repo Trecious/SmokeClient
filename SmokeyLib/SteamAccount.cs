@@ -6,9 +6,7 @@ namespace SmokeyLib
 {
     public class SteamAccount
     {
-        private const string SENTRYFILEPATH = "sentry.bin";
-
-        private RepeatedFunction updateFunction;
+        private RepeatedFunction _updateFunction;
 
         private CallbackManager _callbackManager;
         private SteamClient _client;
@@ -40,11 +38,14 @@ namespace SmokeyLib
             _callbackManager.Subscribe<SteamUser.LoginKeyCallback>(OnLoginKeyCallback);
             _callbackManager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnUpdateMachineAuthCallback);
 
-            updateFunction = new RepeatedFunction(() => _callbackManager.RunCallbacks(), 3000);
+            _updateFunction = new RepeatedFunction(() => _callbackManager.RunCallbacks(), 3000);
         }
 
         public void DoLogin(string username, string password, string twoFaCode, string guardCode, bool rememberPw)
         {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                throw new ArgumentException("Username and Password have to be set!");
+
             _username = username;
             _password = password;
             _twoFaCode = twoFaCode;
@@ -52,7 +53,7 @@ namespace SmokeyLib
             _rememberPw = rememberPw;
 
             _client.Connect();
-            updateFunction.Start();
+            _updateFunction.Start();
         }
 
         private void OnLoginKeyCallback(SteamUser.LoginKeyCallback callback)
@@ -79,7 +80,7 @@ namespace SmokeyLib
         {
             if(callback.Result != EResult.OK)
             {
-                _eventManager.Handle(new SteamEvent.LoginFailed { Reason = callback.Result });
+                _eventManager.Handle(new SteamEvent.LoginFailed { Reason = (SteamEvent.LoginFailed.EReason) callback.Result });
                 return;
             }
 
@@ -112,6 +113,7 @@ namespace SmokeyLib
             if (!_expectReconnect)
             {
                 _eventManager.Handle(new SteamEvent.Disconnected { CausedByUser = callback.UserInitiated });
+                _updateFunction.Stop();
                 return;
             }
 

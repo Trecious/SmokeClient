@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SteamKit2;
+﻿using SteamKit2;
+using System;
 
 namespace SmokeyLib
 {
@@ -16,12 +12,27 @@ namespace SmokeyLib
 
         public class LoginFailed : IEventMsg
         {
-            public EResult Reason { get; set; }
+            public enum EReason
+            {
+                InvalidPassword = 5,
+                LoggedInElsewhere = 6,
+                AccountLogonDenied = 63,
+                AccountDisabled = 43,
+                PasswordUnset = 56,
+                AccountLogonDeniedNoMail = 66,
+                AccountLockedDown = 73,
+                AccountLogonDeniedVerifiedEmailRequired = 74,
+                AccountLoginDeniedNeedTwoFactor,
+                AccountLoginDeniedThrottle = 87,
+                AccountLimitExceeded = 95,
+                AccountActivityLimitExceeded = 96
+            }
+
+            public EReason Reason { get; set; }
         }
 
         public class LoggedIn : IEventMsg
         {
-
         }
     }
 }

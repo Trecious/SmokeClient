@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SmokeyLib;
 
 namespace SmokeyTests
@@ -17,19 +13,19 @@ namespace SmokeyTests
             eventManager.Subscribe<SteamEvent.LoggedIn>(OnLoggedIn);
             eventManager.Subscribe<SteamEvent.LoginFailed>(OnLoginFailed);
 
-            account.DoLogin(null, null, null, null, false);
+            account.DoLogin("123", "456", null, null, false);
+
             Console.ReadKey();
         }
 
         private static void OnLoginFailed(SteamEvent.LoginFailed obj)
         {
-            Console.ReadKey();
+            Console.WriteLine("Login Failed: " + obj.Reason);
         }
 
         private static void OnLoggedIn(SteamEvent.LoggedIn obj)
         {
-            Console.WriteLine("OK");
-            Console.ReadKey();
+            Console.WriteLine("Logged in !");
         }
     }
 }
