@@ -24,10 +24,9 @@ namespace SomkeClient
         {
             InitializeComponent();
 
-
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            this.Width = SystemParameters.WorkArea.Width / 2.3;
+            this.Width = SystemParameters.WorkArea.Width / 3.3;
             this.Height = this.Width / 16 * 9;
             this.MaxWidth = SystemParameters.WorkArea.Width;
             this.MaxHeight = SystemParameters.WorkArea.Height;
@@ -89,10 +88,42 @@ namespace SomkeClient
 
         private void PwTxt_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if(PwTxt.Password.Length != 0)
-                RegBtn.Visibility = Visibility.Hidden;
+            if (PwTxt.Password.Length != 0)
+            {
+                MainBtn.Content = "Login";
+                MainBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF17954D"));
+                MainBtn.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF1C7C44"));
+            }
             else
-                RegBtn.Visibility = Visibility.Visible;
+            {
+                MainBtn.Content = "Register";
+                MainBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3498DB"));
+                MainBtn.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF216A9B"));
+            }
+        }
+
+        private void FogPw_MouseEnter(object sender, MouseEventArgs e)
+        {
+            FogPw.Foreground = PwTxt.Foreground;
+        }
+
+        private void FogPw_MouseLeave(object sender, MouseEventArgs e)
+        {
+            FogPw.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3D4651"));
+        }
+
+        private void MainBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(MainBtn.Content.ToString() == "Login")
+            {
+                MainWindow w = new MainWindow();
+                w.Show();
+               
+            }
+            else
+            {
+
+            }
         }
     }
 }

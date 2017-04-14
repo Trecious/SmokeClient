@@ -112,28 +112,15 @@
                         </Viewbox>
 
                     </Grid>
-
-
                 </Grid>
 
-                <Grid Grid.Column="1">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <Viewbox Grid.Row="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <Button x:Name="LogBtn" Content="Login" BorderThickness="1" Margin="1,1,7,2" Width="160" Height="50" Background="#FF17954D" BorderBrush="#FF1C7C44" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" Foreground="White" FontSize="35" />
-                    </Viewbox>
-
-                    <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <Button x:Name="RegBtn" Content="Register" BorderThickness="1" Margin="1,1,7,1" Width="160" Height="50" Background="#FF3498DB" BorderBrush="#FF216A9B" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" Foreground="White" FontSize="35" />
-                    </Viewbox>
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <Button x:Name="MainBtn" Content="Register" BorderThickness="1" Margin="1,1,7,1" Width="160" Height="150" Background="#FF3498DB" BorderBrush="#FF216A9B" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" Foreground="White" FontSize="35" Click="MainBtn_Click" />
+                </Viewbox>
 
 
 
-                </Grid>
+
 
             </Grid>
             <!--#endregion-->
@@ -153,7 +140,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <CheckBox BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF091625" Foreground="White" BorderBrush="{x:Null}" />
+                        <CheckBox BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF313B46" Foreground="{x:Null}" BorderBrush="{x:Null}" />
                     </Viewbox>
                     
                     <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
@@ -163,7 +150,7 @@
                 </Grid>
                 
                 <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <TextBlock Grid.Column="0" Text="Forgot Password?" Foreground="#FF3D4651" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" Height="96" Margin="200,100,0,0" HorizontalAlignment="Right" TextDecorations="Underline" />
+                    <TextBlock x:Name="FogPw" Grid.Column="0" Text="Forgot Password?" Foreground="#FF3D4651" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" Height="96" Margin="200,100,0,0" HorizontalAlignment="Right" TextDecorations="Underline" MouseEnter="FogPw_MouseEnter" />
                 </Viewbox>
 
 
