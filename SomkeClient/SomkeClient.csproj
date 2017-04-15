@@ -120,13 +120,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Roboto\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Windows\Close.PNG" />
+    <Resource Include="Resources\Windows\Demaximize.PNG" />
+    <Resource Include="Resources\Windows\Maximize.PNG" />
+    <Resource Include="Resources\Windows\Minimize.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

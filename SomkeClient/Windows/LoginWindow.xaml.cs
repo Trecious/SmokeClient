@@ -26,11 +26,17 @@ namespace SomkeClient
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            this.Width = SystemParameters.WorkArea.Width / 3.3;
-            this.Height = this.Width / 16 * 9;
+            setSize();
+            
             this.MaxWidth = SystemParameters.WorkArea.Width;
             this.MaxHeight = SystemParameters.WorkArea.Height;
 
+        }
+
+        private void setSize()
+        {
+            this.Width = SystemParameters.WorkArea.Width / 3.3;
+            this.Height = this.Width / 16 * 9;
         }
 
         #region Resizing and Dragging EventHandlers
@@ -118,12 +124,39 @@ namespace SomkeClient
             {
                 MainWindow w = new MainWindow();
                 w.Show();
+                this.Close();
                
             }
             else
             {
 
             }
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private bool _maximize = true;
+        private void MultiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (_maximize)
+            {
+                this.WindowState = WindowState.Maximized;
+                _maximize = false;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+                _maximize = true;
+            }    
+
+        }
+
+        private void MinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

@@ -28,7 +28,7 @@
 
         <!--#region Main Grid-->
         <Grid Background="#02080F">
-
+    
             <!--#region Main Settings-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*" />
@@ -41,8 +41,9 @@
             <Grid Grid.Row="0" Margin="20,10,0,0">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
@@ -63,6 +64,31 @@
                     </Grid>
                 </Viewbox>
 
+                <Viewbox Grid.Column="2" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <Grid Width="110" Height="50" Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="MinBtn" Grid.Column="1" Width="15" Height="15" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="MinBtn_Click">
+                            <Image Source="../Resources/Windows/Minimize.PNG"/>
+                        </Button>
+
+                        <Button x:Name="MultiBtn" Grid.Column="2" Width="15" Height="15" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="MultiBtn_Click">
+                            <Image x:Name="MultiImg" Source="../Resources/Windows/Maximize.PNG"/>
+                        </Button>
+
+                        <Button x:Name="CloseBtn" Grid.Column="3" Width="15" Height="15" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CloseBtn_Click">
+                            <Image Source="../Resources/Windows/Close.PNG"/>
+                        </Button>
+                        
+
+                    </Grid>
+                </Viewbox>
+                
             </Grid>
             <!--#endregion-->
 
