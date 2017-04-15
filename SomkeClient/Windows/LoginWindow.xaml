@@ -22,13 +22,15 @@
         ResizeBorderThickness="4"         
         GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
+    
     <!--#endregion-->
 
+    
     <Border Padding="3" Background="#151515">
 
         <!--#region Main Grid-->
         <Grid Background="#02080F">
-    
+
             <!--#region Main Settings-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*" />
@@ -38,20 +40,20 @@
             <!--#endregion-->
 
             <!--#region First Grid-->
-            <Grid Grid.Row="0" Margin="20,10,0,0">
+            <Grid Grid.Row="0" Margin="10,0,0,0">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.1*"/>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,10,0,0">
                     <Image Grid.Column="0" Source="../Resources/Icon.ico" Margin="0,0,20,0" HorizontalAlignment="Left"/>
                 </Viewbox>
 
                 <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <Grid x:Name="UpperLabelGrid">
+                    <Grid x:Name="UpperLabelGrid" Margin="0,10,0,0">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.3*" />
@@ -84,20 +86,20 @@
                         <Button x:Name="CloseBtn" Grid.Column="3" Width="15" Height="15" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="CloseBtn_Click">
                             <Image Source="../Resources/Windows/Close.PNG"/>
                         </Button>
-                        
+
 
                     </Grid>
                 </Viewbox>
-                
+
             </Grid>
             <!--#endregion-->
 
             <!--#region Second Grid-->
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="0,10,0,0">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="0.45*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -109,39 +111,42 @@
 
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.2*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                            <TextBlock Grid.Column="0" Text="Username: " Foreground="White" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" />
+                        <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                            <Image Source="/SomkeClient;component/Resources/Login/avatar.png" Height="34" Width="22" />
                         </Viewbox>
 
                         <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                            <TextBox x:Name="UnTxt" Margin="2,5,5,5" Width="80" Foreground="White" SelectionBrush="#FFABADB3" BorderThickness="0.5" Background="#FF091625" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Light"/>
+                            <TextBox x:Name="UnTxt" Margin="2,5,5,5" Width="105" Foreground="White" SelectionBrush="#FFABADB3" BorderThickness="0.5" Background="#FF091625" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Light" />
                         </Viewbox>
 
                     </Grid>
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.2*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                            <TextBlock Grid.Column="0" Text="Password: " Foreground="White" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" />
+                        <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                            <Image Source="/SomkeClient;component/Resources/Login/padlock.png" Height="34" Width="22" />
                         </Viewbox>
 
                         <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                            <PasswordBox x:Name="PwTxt" Margin="2,5,5,5" Width="80" Foreground="White" SelectionBrush="#FFABADB3" BorderThickness="0.5" Background="#FF091625" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Light" PasswordChanged="PwTxt_PasswordChanged"/>
+                            <PasswordBox x:Name="PwTxt" Margin="2,5,5,5" Width="105" Foreground="White" SelectionBrush="#FFABADB3" BorderThickness="0.5" Background="#FF091625" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Light" PasswordChanged="PwTxt_PasswordChanged"/>
                         </Viewbox>
 
                     </Grid>
                 </Grid>
 
-                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <Button x:Name="MainBtn" Content="Register" BorderThickness="1" Margin="1,1,7,1" Width="160" Height="150" Background="#FF3498DB" BorderBrush="#FF216A9B" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" Foreground="White" FontSize="35" Click="MainBtn_Click" />
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0">
+                    <Button x:Name="MainBtn" BorderThickness="0" Margin="1,1,7,1" Width="160" Height="220" Background="#FF58D68D" BorderBrush="{x:Null}" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Black" Foreground="White" FontSize="35" Click="MainBtn_Click">
+                        <Image Source="/SomkeClient;component/Resources/Login/sign-in.png" Margin="40" />
+                        
+                    </Button>
                 </Viewbox>
 
 
@@ -153,7 +158,7 @@
 
             <!--#region Third Grid-->
             <Grid Grid.Row="2">
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="1*"/>
@@ -161,22 +166,22 @@
 
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.3*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="27*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <CheckBox BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF313B46" Foreground="{x:Null}" BorderBrush="{x:Null}" />
+                    <Viewbox Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="92">
+                        <CheckBox BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF313B46" Foreground="{x:Null}" BorderBrush="{x:Null}" Width="14" Height="26" Margin="10,0,0,0" />
                     </Viewbox>
-                    
-                    <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <TextBlock Grid.Column="0" Text="Remember me" Foreground="White" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" />
+
+                    <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Grid.Column="0" Text="Remember me" Foreground="White" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" Margin="0,0,80,0" />
                     </Viewbox>
 
                 </Grid>
-                
-                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                    <TextBlock x:Name="FogPw" Grid.Column="0" Text="Forgot Password?" Foreground="#FF3D4651" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" Height="96" Margin="200,100,0,0" HorizontalAlignment="Right" TextDecorations="Underline" MouseEnter="FogPw_MouseEnter" />
+
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="89" Margin="0,0,5,5">
+                    <TextBlock x:Name="FogPw" Grid.Column="0" Text="Forgot Password?" Foreground="#FF3D4651" FontSize="80" FontFamily="/SomkeClient;component/Fonts/Roboto/#Roboto Medium" Height="96" Margin="0" HorizontalAlignment="Center" TextDecorations="Underline" MouseEnter="FogPw_MouseEnter" MouseLeave="FogPw_MouseLeave" VerticalAlignment="Center" />
                 </Viewbox>
 
 

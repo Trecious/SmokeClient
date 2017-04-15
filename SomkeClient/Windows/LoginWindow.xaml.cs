@@ -31,6 +31,8 @@ namespace SomkeClient
             this.MaxWidth = SystemParameters.WorkArea.Width;
             this.MaxHeight = SystemParameters.WorkArea.Height;
 
+            MainBtn.IsEnabled = false;
+
         }
 
         private void setSize()
@@ -39,12 +41,22 @@ namespace SomkeClient
             this.Height = this.Width / 16 * 9;
         }
 
-        #region Resizing and Dragging EventHandlers
+        #region Resizing and Dragging Event Handlers
         private double _lastHeight;
         private double _lastWidth;
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (!_maximize)
+            {
+                this.Width = _maximizeWidth;
+                this.Height = _maximizeHeight;
+
+                this.Left = PointToScreen(Mouse.GetPosition(this)).X;
+                this.Top = PointToScreen(Mouse.GetPosition(this)).Y;
+
+                _maximize = true;
+            }
             this.DragMove();
         }
 
@@ -92,19 +104,61 @@ namespace SomkeClient
         }
         #endregion
 
+        #region Control Button Event Handlers
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private bool _maximize = true;
+        private double _maximizeWidth;
+        private double _maximizeHeight;
+        private double _maximizeLeft;
+        private double _maximizeTop;
+
+        private void MultiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (_maximize)
+            {
+                _maximizeWidth = this.Width;
+                _maximizeHeight = this.Height;
+                _maximizeLeft = this.Left;
+                _maximizeTop = this.Top;
+
+                this.Width = SystemParameters.WorkArea.Width;
+                this.Height = SystemParameters.WorkArea.Height;
+                this.Left = 0;
+                this.Top = 0;
+                _maximize = false;
+            }
+            else
+            {
+                this.Width = _maximizeWidth;
+                this.Height = _maximizeHeight;
+                this.Left = _maximizeLeft;
+                this.Top = _maximizeTop;
+
+                _maximize = true;
+            }
+
+        }
+
+        private void MinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        #endregion
+
         private void PwTxt_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (PwTxt.Password.Length != 0)
             {
-                MainBtn.Content = "Login";
-                MainBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF17954D"));
-                MainBtn.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF1C7C44"));
+                MainBtn.IsEnabled = true;
             }
             else
             {
-                MainBtn.Content = "Register";
-                MainBtn.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3498DB"));
-                MainBtn.BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF216A9B"));
+                MainBtn.IsEnabled = false;
             }
         }
 
@@ -120,43 +174,9 @@ namespace SomkeClient
 
         private void MainBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MainBtn.Content.ToString() == "Login")
-            {
-                MainWindow w = new MainWindow();
-                w.Show();
-                this.Close();
-               
-            }
-            else
-            {
-
-            }
-        }
-
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private bool _maximize = true;
-        private void MultiBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (_maximize)
-            {
-                this.WindowState = WindowState.Maximized;
-                _maximize = false;
-            }
-            else
-            {
-                this.WindowState = WindowState.Normal;
-                _maximize = true;
-            }    
-
-        }
-
-        private void MinBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
+            MainWindow w = new MainWindow();
+            w.Show();
+            this.Close();
         }
     }
 }

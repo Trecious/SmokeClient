@@ -59,7 +59,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Windows\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
@@ -71,7 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -135,6 +135,15 @@
     <Resource Include="Resources\Windows\Demaximize.PNG" />
     <Resource Include="Resources\Windows\Maximize.PNG" />
     <Resource Include="Resources\Windows\Minimize.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login\padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login\sign-in.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
