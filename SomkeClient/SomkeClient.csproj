@@ -145,5 +145,8 @@
   <ItemGroup>
     <Resource Include="Resources\Login\sign-in.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MusicPlayer\unknown.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
